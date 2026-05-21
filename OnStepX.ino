@@ -40,13 +40,7 @@
 
 // Use tabs "Config..." to configure OnStep to your requirements
 
-// Firmware version ----------------------------------------------------------------------------------------------------------------
-#define FirmwareName                "On-Step"
-#define FirmwareVersionMajor        10
-#define FirmwareVersionMinor        24     // minor version 00 to 99
-#define FirmwareVersionPatch        "c"    // for example major.minor patch: 10.03c
-#define FirmwareVersionConfig       6      // internal, for tracking configuration file changes
-
+#include <Arduino.h>
 #include "src/Common.h"
 NVS nv;
 #include "src/Validate.h"
@@ -57,6 +51,13 @@ NVS nv;
 extern Telescope telescope;
 
 #include "src/plugins/Plugins.config.h"
+
+// Firmware version ----------------------------------------------------------------------------------------------------------------
+#define FirmwareName                "On-Step"
+#define FirmwareVersionMajor        10
+#define FirmwareVersionMinor        24     // minor version 00 to 99
+#define FirmwareVersionPatch        "c"    // for example major.minor patch: 10.03c
+#define FirmwareVersionConfig       6      // internal, for tracking configuration file changes
 
 #if DEBUG == PROFILER
   extern void profiler();

@@ -39,7 +39,16 @@
 #define SERIAL_C_BAUD_DEFAULT         OFF //    OFF, n. Baud rate as above. See (src/pinmaps/) for Serial port assignments.   Infreq
 #define SERIAL_D_BAUD_DEFAULT         OFF //    OFF, n. Baud rate as above. See (src/pinmaps/) for Serial port assignments.   Infreq
 #define SERIAL_E_BAUD_DEFAULT         OFF //    OFF, n. Baud rate as above. See (src/pinmaps/) for Serial port assignments.   Infreq
-#define SERIAL_RADIO    WIFI_ACCESS_POINT //    OFF, Use BLUETOOTH or WIFI_ACCESS_POINT or WIFI_STATION (ESP32 only.)         Option
+#define SERIAL_RADIO    WIFI_STATION //    OFF, Use BLUETOOTH or WIFI_ACCESS_POINT or WIFI_STATION (ESP32 only.)         Option
+
+// redenciais da rede do Astroberry (hotspot do Raspberry)
+#define STA_SSID "astroberry"
+#define STA_PASSWORD "astroberry"
+
+// recomendado
+#define STA_DHCP_ENABLED true
+#define STA_AP_FALLBACK true
+#define MDNS_NAME "onstepx"
 
 // STATUS --------------------------------------------- see https://onstep.groups.io/g/main/wiki/Configuration_Controller#STATUS_LED
 #define STATUS_LED                     ON //    OFF, Steady illumination if no error, blinks w/error code otherwise.          Option
@@ -50,7 +59,7 @@
 #define RETICLE_LED_INVERT            OFF //    OFF, ON Inverts control for cases where 0V is max brightness.                 Option
 
 // WEATHER SENSOR --------------------------------- see https://onstep.groups.io/g/main/wiki/Configuration_Controller#WEATHER_SENSOR
-#define WEATHER               BME280_0x76 //    OFF, BME280 (I2C 0x77,) BME280_0x76, BME280_SPI (see pinmap for CS.)          Option
+#define WEATHER               OFF //    OFF, BME280 (I2C 0x77,) BME280_0x76, BME280_SPI (see pinmap for CS.)          Option
                                           //         BMP280 (I2C 0x77,) BMP280_0x76, BMP280_SPI (see pinmap for CS.)
                                           //         BME280 or BMP280 for temperature, pressure.  BME280 for humidity also.
 
@@ -72,18 +81,18 @@
 
 // If runtime axis settings are enabled changes in the section below will be ignored (disable in SWS or by wiping NV/EEPROM):
 // \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ 
-#define AXIS1_STEPS_PER_DEGREE      12800 //  12800, n. Number of steps per degree:                                          <-Req'd
+#define AXIS1_STEPS_PER_DEGREE      46354 //  12800, n. Number of steps per degree:                                          <-Req'd
                                           //         n = (stepper_steps * micro_steps * overall_gear_reduction)/360.0
 #define AXIS1_REVERSE                 OFF //    OFF, ON Reverses movement direction, or reverse wiring instead to correct.   <-Often
 #define AXIS1_LIMIT_MIN              -180 //   -180, n. Where n= -90..-360 (degrees.) Minimum "Hour Angle" or Azimuth.        Adjust
 #define AXIS1_LIMIT_MAX               180 //    180, n. Where n=  90.. 360 (degrees.) Maximum "Hour Angle" or Azimuth.        Adjust
 
-#define AXIS1_DRIVER_MICROSTEPS        32 //    OFF, n. Microstep mode when tracking.                                        <-Req'd
+#define AXIS1_DRIVER_MICROSTEPS        64 //    OFF, n. Microstep mode when tracking.                                        <-Req'd
 #define AXIS1_DRIVER_MICROSTEPS_GOTO    4 //    OFF, n. Microstep mode used during slews. OFF uses _DRIVER_MICROSTEPS.        Option
 
 // for TMC2130, TMC5160, TMC2209, TMC2226 STEP/DIR driver models:
 #define AXIS1_DRIVER_IHOLD            OFF //    OFF, n, (mA.) Current during standstill. OFF uses IRUN/2.0                    Option
-#define AXIS1_DRIVER_IRUN             500 //    OFF, n, (mA.) Current during tracking, appropriate for stepper/driver/etc.    Option
+#define AXIS1_DRIVER_IRUN             1000 //    OFF, n, (mA.) Current during tracking, appropriate for stepper/driver/etc.    Option
 #define AXIS1_DRIVER_IGOTO            OFF //    OFF, n, (mA.) Current during slews. OFF uses IRUN.                            Option
 // /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /
 
@@ -107,18 +116,18 @@
 
 // If runtime axis settings are enabled changes in the section below will be ignored (disable in SWS or by wiping NV/EEPROM):
 // \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
-#define AXIS2_STEPS_PER_DEGREE      12800 //  12800, n. Number of steps per degree:                                          <-Req'd
+#define AXIS2_STEPS_PER_DEGREE      46354 //  12800, n. Number of steps per degree:                                          <-Req'd
                                           //         n = (stepper_steps * micro_steps * overall_gear_reduction)/360.0
 #define AXIS2_REVERSE                 OFF //    OFF, ON Reverses movement direction, or reverse wiring instead to correct.   <-Often
 #define AXIS2_LIMIT_MIN               -90 //    -90, n. Where n=-90..0 (degrees.) Minimum allowed Declination or Altitude.    Infreq
 #define AXIS2_LIMIT_MAX                90 //     90, n. Where n=0..90 (degrees.) Maximum allowed Declination or Altitude.     Infreq
 
-#define AXIS2_DRIVER_MICROSTEPS        32 //    OFF, n. Microstep mode when tracking.                                        <-Req'd
+#define AXIS2_DRIVER_MICROSTEPS        64 //    OFF, n. Microstep mode when tracking.                                        <-Req'd
 #define AXIS2_DRIVER_MICROSTEPS_GOTO    4 //    OFF, n. Microstep mode used during slews. OFF uses _DRIVER_MICROSTEPS.        Option
 
 // for TMC2130, TMC5160, TMC2209, TMC2226 STEP/DIR driver models:
 #define AXIS2_DRIVER_IHOLD            OFF //    OFF, n, (mA.) Current during standstill. OFF uses IRUN/2.0                    Option
-#define AXIS2_DRIVER_IRUN             500 //    OFF, n, (mA.) Current during tracking, appropriate for stepper/driver/etc.    Option
+#define AXIS2_DRIVER_IRUN             1000 //    OFF, n, (mA.) Current during tracking, appropriate for stepper/driver/etc.    Option
 #define AXIS2_DRIVER_IGOTO            OFF //    OFF, n, (mA.) Current during slews. OFF uses IRUN.                            Option
 // /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /
 
@@ -153,7 +162,7 @@
 #define MOUNT_ENABLE_IN_STANDBY       OFF //    OFF, ON Enables mount motor drivers while in standby.                         Infreq
 
 // TIME AND LOCATION ---------------------------------------------- see https://onstep.groups.io/g/main/wiki/Configuration_Mount#TLS
-#define TIME_LOCATION_SOURCE       DS3231 //    OFF, DS3231 (I2C,) SD3031 (I2C,) TEENSY (T3.2 etc,) GPS, or NTP source.       Option
+#define TIME_LOCATION_SOURCE       NTP //    OFF, DS3231 (I2C,) SD3031 (I2C,) TEENSY (T3.2 etc,) GPS, or NTP source.       Option
                                           //         Provides Date/Time, and if available, PPS & Lat/Long also.
 #define TIME_LOCATION_PPS_SENSE       OFF //    OFF, HIGH senses PPS (pulse per second,) signal rising edge, or use LOW for   Option
                                           //         falling edge, or use BOTH for rising and falling edges.
@@ -354,7 +363,7 @@
 // FEATURES ------------------------------------------------------------- see https://onstep.groups.io/g/main/wiki/Configuration_Aux
 // Note: Temporarily set DEBUG mode to VERBOSE and use "FEATURE1_TEMP DS1820" to list the DS18B20 device serial numbers.
 
-#define FEATURE1_PURPOSE       DEW_HEATER //    OFF, SWITCH, MOMENTARY_SWITCH, ANALOG_OUT, DEW_HEATER, INTERVALOMETER.        Option
+#define FEATURE1_PURPOSE       OFF //    OFF, SWITCH, MOMENTARY_SWITCH, ANALOG_OUT, DEW_HEATER, INTERVALOMETER.        Option
 #define FEATURE1_NAME        "Dew Heat 1" // "FE..", Name of feature being controlled.                                        Adjust
 #define FEATURE1_TEMP                 OFF //    OFF, THERMISTOR or n. Where n is the ds18b20 s/n. For DEW_HEATER temperature. Adjust
 #define FEATURE1_PIN                    2 //    OFF, AUX for auxiliary pin, n. Where n is the pin#. (E0)                      Adjust
@@ -362,7 +371,7 @@
 #define FEATURE1_VALUE_MEMORY         OFF //    OFF, ON remembers SWITCH, ANALOG_OUT, DEW_HEATER state across power cycles.   Adjust
 #define FEATURE1_ON_STATE            HIGH //   HIGH, LOW to invert so "ON" is 0V and "OFF" is Vcc (3.3V usually.)             Adjust
 
-#define FEATURE2_PURPOSE       DEW_HEATER //    OFF, SWITCH, MOMENTARY_SWITCH, ANALOG_OUT, DEW_HEATER, INTERVALOMETER.        Option
+#define FEATURE2_PURPOSE       OFF //    OFF, SWITCH, MOMENTARY_SWITCH, ANALOG_OUT, DEW_HEATER, INTERVALOMETER.        Option
 #define FEATURE2_NAME        "Dew Heat 2" // "FE..", Name of feature being controlled.                                        Adjust
 #define FEATURE2_TEMP          THERMISTOR //    OFF, THERMISTOR or n. Where n is the ds18b20 s/n. For DEW_HEATER temperature. Adjust
 #define FEATURE2_PIN                    4 //    OFF, AUX for auxiliary pin, n. Where n is the pin#. (BED/TB)                  Adjust

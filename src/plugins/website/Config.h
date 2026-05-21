@@ -34,6 +34,29 @@
 #define DISPLAY_RESET_CONTROLS         ON //     ON, ON to allow reset of OnStep, FWU for STM32 firmware upload pin HIGH.     Option
 #endif
 
+#ifndef OTA_WEBSERVER
+#define OTA_WEBSERVER                  ON //    OFF, ON Enable ElegantOTA firmware updates at /update.                        Option
+#endif
+#ifndef OTA_WEBSERVER_USERNAME
+#define OTA_WEBSERVER_USERNAME   "onstepx" //  "onst..", Web username for ElegantOTA endpoint.                                  Option
+#endif
+#ifndef OTA_WEBSERVER_PASSWORD
+#define OTA_WEBSERVER_PASSWORD         "" //    "", "pwd". Empty uses WiFi master password from Network settings.            Option
+#endif
+
+#ifndef OTA_ARDUINO
+#define OTA_ARDUINO                   ON //    OFF, ON Enable ArduinoOTA (espota) for PlatformIO direct OTA upload.         Option
+#endif
+#ifndef OTA_ARDUINO_HOSTNAME
+#define OTA_ARDUINO_HOSTNAME   "onstepx" //  "onst..", Hostname announced for ArduinoOTA.                                     Option
+#endif
+#ifndef OTA_ARDUINO_PORT
+#define OTA_ARDUINO_PORT            3232 //   3232, n. TCP port for ArduinoOTA/espota uploads.                               Option
+#endif
+#ifndef OTA_ARDUINO_PASSWORD
+#define OTA_ARDUINO_PASSWORD   "onstepx" //  "onst..". Empty uses WiFi master password from Network settings.                Option
+#endif
+
 #ifndef DISPLAY_SPECIAL_CHARS
 #define DISPLAY_SPECIAL_CHARS          ON //     ON, For standard ASCII special symbols (compatibility.)                      Infreq
 #endif
