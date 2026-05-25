@@ -1,13 +1,35 @@
-.vscode/settings.json
-*.json
-__vm/*
-*.vcxproj*
-.vs/*
+# PlatformIO build output
+.pio/
+.pioenvs/
+.piolibdeps/
+
+# IDE/editor local state
+.vscode/
+.vs/
+*.code-workspace
+
+# Generated project files
 *.sln
-Debug/*
-Release/*
+*.vcxproj*
+Debug/
+Release/
+
+# Debug artifacts
 debug.cfg
-esp32.svd
-src/plugins/*
 debug.svd
-z.*
+esp32.svd
+
+# Python/cache/temp files
+__pycache__/
+*.py[cod]
+*.tmp
+*.temp
+*.log
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local scratch/runtime data
+__vm/
